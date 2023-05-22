@@ -160,15 +160,20 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           Column(
                             children: [
-                              Container(
-                                height: 50.sp,
-                                width: 50.sp,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Color(0xff473F97),
-                                ),
-                                child: Image.asset(
-                                  "Assets/Images/Home/attendance.png",
+                              InkWell(
+                                onTap: () {
+                                  Get.toNamed('/attendance');
+                                },
+                                child: Container(
+                                  height: 50.sp,
+                                  width: 50.sp,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Color(0xff473F97),
+                                  ),
+                                  child: Image.asset(
+                                    "Assets/Images/Home/attendance.png",
+                                  ),
                                 ),
                               ),
                               SizedBox(height: 8.sp),

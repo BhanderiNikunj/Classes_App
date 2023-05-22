@@ -16,7 +16,6 @@ class FeesControllor extends GetxController {
   RxInt Std = 1.obs;
   RxString Sex = "Male".obs;
 
-
   TextEditingController txtFirstNameu = TextEditingController();
   TextEditingController txtLastNameu = TextEditingController();
   TextEditingController txtMobileNou = TextEditingController();
@@ -33,6 +32,10 @@ class FeesControllor extends GetxController {
   DateTime? dateTime = DateTime.now();
 
   RxList FeesDetailList = [].obs;
+
+  //filter variable
+
+  RxInt fStd = 10.obs;
 
   void insertFees({
     required first_name,
@@ -66,6 +69,14 @@ class FeesControllor extends GetxController {
     required id,
   }) {
     DBHelper.dbHelper.delateFees(id: id);
+  }
+
+  Future<void> filterData({
+    required std,
+  }) async {
+    FeesDetailList.value = await DBHelper.dbHelper.filterStudentStd(
+      std: std,
+    );
   }
 
   void updateFees({

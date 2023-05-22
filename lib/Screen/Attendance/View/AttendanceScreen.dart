@@ -3,24 +3,17 @@ import 'package:get/get.dart';
 import 'package:my_app_1/Screen/Fees/Controllor/FeesControllor.dart';
 import 'package:sizer/sizer.dart';
 
-class FeesScreen extends StatefulWidget {
-  const FeesScreen({Key? key}) : super(key: key);
+class AttendanceScreen extends StatefulWidget {
+  const AttendanceScreen({Key? key}) : super(key: key);
 
   @override
-  State<FeesScreen> createState() => _FeesScreenState();
+  State<AttendanceScreen> createState() => _AttendanceScreenState();
 }
 
-class _FeesScreenState extends State<FeesScreen> {
+class _AttendanceScreenState extends State<AttendanceScreen> {
   FeesControllor feesControllor = Get.put(
     FeesControllor(),
   );
-
-  @override
-  void initState() {
-    super.initState();
-
-    feesControllor.readFees();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,107 +35,6 @@ class _FeesScreenState extends State<FeesScreen> {
                     children: [
                       SizedBox(
                         height: 80.sp,
-                      ),
-                      Obx(
-                        () => Expanded(
-                          child: ListView.builder(
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: InkWell(
-                                  onTap: () {
-                                    Get.toNamed('/studentdetail',
-                                        arguments: index);
-                                  },
-                                  child: Container(
-                                    width: 150.sp,
-                                    height: 80.sp,
-                                    decoration: BoxDecoration(
-                                      border:
-                                          Border.all(color: Color(0xff0e0062)),
-                                      borderRadius: BorderRadius.circular(8.sp),
-                                      color: Color(0xff473F97),
-                                    ),
-                                    child: Padding(
-                                      padding: EdgeInsets.all(10.sp),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Column(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceAround,
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                "First Name : ${feesControllor.FeesDetailList[index]['first_name']}",
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                ),
-                                              ),
-                                              Text(
-                                                "Last Name : ${feesControllor.FeesDetailList[index]['last_name']}",
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                ),
-                                              ),
-                                              Text(
-                                                "Std : ${feesControllor.FeesDetailList[index]['std']}",
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                ),
-                                              ),
-                                              Text(
-                                                "Gender : ${feesControllor.FeesDetailList[index]['sex']}",
-                                                style: TextStyle(
-                                                  color: Colors.white,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceEvenly,
-                                            children: [
-                                              InkWell(
-                                                onTap: () {
-                                                  Get.toNamed('/updatefees',
-                                                      arguments: index);
-                                                },
-                                                child: Icon(
-                                                  Icons.edit,
-                                                  color: Colors.white,
-                                                ),
-                                              ),
-                                              SizedBox(width: 10.sp),
-                                              InkWell(
-                                                onTap: () {
-                                                  feesControllor.delateFees(
-                                                    id: feesControllor
-                                                            .FeesDetailList[
-                                                        index]['id'],
-                                                  );
-
-                                                  feesControllor.readFees();
-                                                },
-                                                child: Icon(
-                                                  Icons.delete,
-                                                  color: Colors.white,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              );
-                            },
-                            itemCount: feesControllor.FeesDetailList.length,
-                          ),
-                        ),
                       ),
                     ],
                   ),
@@ -292,15 +184,6 @@ class _FeesScreenState extends State<FeesScreen> {
               ),
             ),
           ],
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Get.toNamed('/addfees');
-          },
-          child: Icon(
-            Icons.add,
-            color: Colors.white,
-          ),
         ),
       ),
     );

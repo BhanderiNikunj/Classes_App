@@ -190,4 +190,16 @@ class DBHelper {
       whereArgs: [id],
     );
   }
+
+  Future<List> filterStudentStd({
+    required std,
+  }) async {
+    database = await ChackDB();
+
+    String quary = "SELECT * FROM fees WHERE std=$std";
+
+    List l1 = await database!.rawQuery(quary);
+
+    return l1;
+  }
 }

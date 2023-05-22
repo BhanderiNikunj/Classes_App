@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:my_app_1/Screen/Attendance/View/AttendanceScreen.dart';
 import 'package:my_app_1/Screen/Fees/View/AddFeesSceen.dart';
 import 'package:my_app_1/Screen/Fees/View/FeesScreen.dart';
 import 'package:my_app_1/Screen/Fees/View/UpdateFeesScreen.dart';
@@ -43,6 +44,10 @@ void main() {
             GetPage(
               name: '/updatefees',
               page: () => UpdateFeesScreen(),
+            ),
+            GetPage(
+              name: '/attendance',
+              page: () => AttendanceScreen(),
             ),
           ],
         );
