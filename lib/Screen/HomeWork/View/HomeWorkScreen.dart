@@ -126,7 +126,9 @@ class _HomeWorkScreenState extends State<HomeWorkScreen> {
 
                                                 Get.defaultDialog(
                                                   title: "Update Data",
-                                                  titleStyle: TextStyle(color: Color(0xff473F97),),
+                                                  titleStyle: TextStyle(
+                                                    color: Color(0xff473F97),
+                                                  ),
                                                   content:
                                                       SingleChildScrollView(
                                                     child: Column(
@@ -241,7 +243,7 @@ class _HomeWorkScreenState extends State<HomeWorkScreen> {
                                                             value: addHomeWorkControllor
                                                                 .changeSubjectu
                                                                 .value,
-                                                            items: [
+                                                            items: const [
                                                               DropdownMenuItem(
                                                                 child: Text(
                                                                   "Maths",
@@ -297,7 +299,7 @@ class _HomeWorkScreenState extends State<HomeWorkScreen> {
                                                                 addHomeWorkControllor
                                                                     .changeStdu
                                                                     .value,
-                                                            items: [
+                                                            items: const [
                                                               DropdownMenuItem(
                                                                 child: Text(
                                                                   "Std 1",
@@ -483,23 +485,166 @@ class _HomeWorkScreenState extends State<HomeWorkScreen> {
                 ),
                 color: Color(0xff473F97),
               ),
-              child: Row(
-                children: [
-                  IconButton(
-                    onPressed: () {
-                      Get.back();
-                    },
-                    icon: Icon(Icons.arrow_back, color: Colors.white),
+              alignment: Alignment.center,
+              child: ListTile(
+                leading: IconButton(
+                  onPressed: () {
+                    Get.back();
+                  },
+                  icon: Icon(
+                    Icons.arrow_back,
+                    color: Colors.white,
                   ),
-                  Text(
-                    "Home Work",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15.sp,
-                      color: Colors.white,
-                    ),
+                ),
+                title: Text(
+                  "Home Work",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15.sp,
+                    color: Colors.white,
                   ),
-                ],
+                ),
+                trailing: IconButton(
+                  onPressed: () {
+                    showModalBottomSheet(
+                      context: context,
+                      builder: (context) {
+                        return Container(
+                          height: 500,
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              topRight: Radius.circular(15.sp),
+                              topLeft: Radius.circular(15.sp),
+                            ),
+                            color: Colors.white,
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Select Std.",
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 15.sp,
+                                  ),
+                                ),
+                                SizedBox(height: 8.sp),
+                                Obx(
+                                  () => DropdownButton(
+                                    value: addHomeWorkControllor.fstd.value,
+                                    isExpanded: true,
+                                    items: [
+                                      DropdownMenuItem(
+                                        child: Text(
+                                          "Std 1",
+                                        ),
+                                        value: 1,
+                                      ),
+                                      DropdownMenuItem(
+                                        child: Text(
+                                          "Std 2",
+                                        ),
+                                        value: 2,
+                                      ),
+                                      DropdownMenuItem(
+                                        child: Text(
+                                          "Std 3",
+                                        ),
+                                        value: 3,
+                                      ),
+                                      DropdownMenuItem(
+                                        child: Text(
+                                          "Std 4",
+                                        ),
+                                        value: 4,
+                                      ),
+                                      DropdownMenuItem(
+                                        child: Text(
+                                          "Std 5",
+                                        ),
+                                        value: 5,
+                                      ),
+                                      DropdownMenuItem(
+                                        child: Text(
+                                          "Std 6",
+                                        ),
+                                        value: 6,
+                                      ),
+                                      DropdownMenuItem(
+                                        child: Text(
+                                          "Std 7",
+                                        ),
+                                        value: 7,
+                                      ),
+                                      DropdownMenuItem(
+                                        child: Text(
+                                          "Std 8",
+                                        ),
+                                        value: 8,
+                                      ),
+                                      DropdownMenuItem(
+                                        child: Text(
+                                          "Std 9",
+                                        ),
+                                        value: 9,
+                                      ),
+                                      DropdownMenuItem(
+                                        child: Text(
+                                          "Std 10",
+                                        ),
+                                        value: 10,
+                                      ),
+                                    ],
+                                    onChanged: (value) {
+                                      addHomeWorkControllor.fstd.value = value!;
+                                    },
+                                  ),
+                                ),
+                                SizedBox(height: 8.sp),
+                                Center(
+                                  child: InkWell(
+                                    onTap: () {
+                                      addHomeWorkControllor.FilterData(
+                                          std:
+                                              addHomeWorkControllor.fstd.value);
+                                      Get.back();
+                                    },
+                                    child: Container(
+                                      width: 80.sp,
+                                      height: 35.sp,
+                                      decoration: BoxDecoration(
+                                        border: Border.all(
+                                            color: Color(0x9e0e0062)),
+                                        borderRadius:
+                                            BorderRadius.circular(8.sp),
+                                        color: Color(0xa3473f97),
+                                      ),
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        "Submit",
+                                        style: TextStyle(
+                                          fontSize: 15.sp,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                  icon: Icon(
+                    Icons.filter_alt_outlined,
+                    color: Colors.white,
+                  ),
+                ),
               ),
             ),
           ],
@@ -513,12 +658,5 @@ class _HomeWorkScreenState extends State<HomeWorkScreen> {
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-
-    addHomeWorkControllor.readHomeWork();
   }
 }

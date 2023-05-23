@@ -250,6 +250,14 @@ class _AddFeesScreenState extends State<AddFeesScreen> {
                         Center(
                           child: InkWell(
                             onTap: () {
+
+                              int totalFees = int.parse(feesControllo.txtTotalFees.text);
+                              int paidFees = int.parse(feesControllo.txtPaidFees.text);
+                              int lessFees = totalFees - paidFees;
+                              print("----------------------------------------------------------------${totalFees}");
+                              print("----------------------------------------------------------------${paidFees}");
+                              print("----------------------------------------------------------------${lessFees}");
+
                               feesControllo.insertFees(
                                 first_name: feesControllo.txtFirstName.text,
                                 last_name: feesControllo.txtLastName.text,
@@ -257,9 +265,9 @@ class _AddFeesScreenState extends State<AddFeesScreen> {
                                 std: feesControllo.Std.value,
                                 sex: feesControllo.Sex.value,
                                 date: feesControllo.txtDate.text,
-                                paidFees: feesControllo.txtPaidFees.text,
-                                lessFees: feesControllo.txtLessFees.text,
-                                totalFees: feesControllo.txtTotalFees.text,
+                                paidFees: paidFees,
+                                lessFees: lessFees,
+                                totalFees: totalFees,
                               );
 
                               feesControllo.readFees();

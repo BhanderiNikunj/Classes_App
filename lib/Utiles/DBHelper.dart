@@ -40,6 +40,11 @@ class DBHelper {
             "CREATE TABLE fees (id INTEGER PRIMARY KEY AUTOINCREMENT , first_name TEXT , last_name TEXT , mobile_no TEXT , std INTEGER , sex TEXT , date TEXT , paidFees INTEGER , lessFees INTEGER , totalFees INTEGER)";
 
         db.execute(quary1);
+
+        String quary2 =
+            "CREATE TABLE att (id INTEGER PRIMARY KEY AUTOINCREMENT , first_name TEXT , last_name TEXT , std INTEGER , Attendance INTEGER)";
+
+        db.execute(quary2);
       },
     );
   }
@@ -105,7 +110,20 @@ class DBHelper {
     );
   }
 
+  Future<List> filterHomeWorkStd({
+    required std,
+  }) async {
+    database = await ChackDB();
+
+    String quary = "SELECT * FROM homeWork WHERE std=$std";
+
+    List l1 = await database!.rawQuery(quary);
+
+    return l1;
+  }
+
   // Fees Table
+
   Future<void> insertFees({
     required first_name,
     required last_name,
@@ -197,6 +215,37 @@ class DBHelper {
     database = await ChackDB();
 
     String quary = "SELECT * FROM fees WHERE std=$std";
+
+    List l1 = await database!.rawQuery(quary);
+
+    return l1;
+  }
+
+  // Attendance
+
+  Future<void> insertAtt({
+    required first_name,
+    required last_name,
+    required std,
+    required Attendance,
+  }) async {
+    database = await ChackDB();
+
+    database!.insert(
+      "att",
+      {
+        "first_name": first_name,
+        "last_name": last_name,
+        "std": std,
+        "Attendance": Attendance,
+      },
+    );
+  }
+
+  Future<List> readAtt() async {
+    database = await ChackDB();
+
+    String quary = "SELECT * FROM att";
 
     List l1 = await database!.rawQuery(quary);
 

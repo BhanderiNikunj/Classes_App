@@ -3,7 +3,6 @@ import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 import 'package:my_app_1/Utiles/DBHelper.dart';
 
-
 class AddHomeWorkControllor extends GetxController {
   TextEditingController txtHomeWork = TextEditingController();
   RxString changeSubject = "Maths".obs;
@@ -15,19 +14,15 @@ class AddHomeWorkControllor extends GetxController {
 
   RxList homeWork = [].obs;
 
+  RxInt fstd = 10.obs;
 
   // update Variable
 
-  TextEditingController
-  txtHomeWorku =
-  TextEditingController();
-  RxString changeSubjectu =
-          "Maths".obs;
+  TextEditingController txtHomeWorku = TextEditingController();
+  RxString changeSubjectu = "Maths".obs;
   RxInt changeStdu = 10.obs;
-  DateTime? dateu =
-  DateTime.now();
-  TextEditingController txtdateu =
-  TextEditingController();
+  DateTime? dateu = DateTime.now();
+  TextEditingController txtdateu = TextEditingController();
 
   RxList<Color> color = <Color>[
     Colors.green.shade200,
@@ -72,7 +67,6 @@ class AddHomeWorkControllor extends GetxController {
 
   Future<void> readHomeWork() async {
     homeWork.value = await DBHelper.dbHelper.readHomeWork();
-    print(homeWork.value);
   }
 
   void delateHomeWork({
@@ -97,5 +91,13 @@ class AddHomeWorkControllor extends GetxController {
     );
 
     readHomeWork();
+  }
+
+  Future<void> FilterData({
+    required std,
+  }) async {
+    homeWork.value = await DBHelper.dbHelper.filterHomeWorkStd(
+      std: std,
+    );
   }
 }

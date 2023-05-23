@@ -97,8 +97,7 @@ class _StudentDetailScreenState extends State<StudentDetailScreen> {
                       ),
                       SizedBox(height: 10.sp),
                       Text(
-                        // "Less Fees  :  ${feesControllor.FeesDetailList[index]['paidFees'].toInt() - feesControllor.FeesDetailList[index]['paidFees']}",
-                        "Less Fees  :  ",
+                        "Less Fees  :  ${feesControllor.FeesDetailList[index]['lessFees']}",
                         style: TextStyle(
                           fontSize: 15.sp,
                         ),

@@ -269,6 +269,33 @@ class _FeesScreenState extends State<FeesScreen> {
                                     },
                                   ),
                                 ),
+                                SizedBox(height: 8.sp),
+                                Center(
+                                  child: InkWell(
+                                    onTap: () {
+                                      feesControllor.filterData(std: feesControllor.fStd.value);
+                                      Get.back();
+                                    },
+                                    child: Container(
+                                      width: 80.sp,
+                                      height: 35.sp,
+                                      decoration: BoxDecoration(
+                                        border:
+                                            Border.all(color: Color(0x9e0e0062)),
+                                        borderRadius: BorderRadius.circular(8.sp),
+                                        color: Color(0xa3473f97),
+                                      ),
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        "Submit",
+                                        style: TextStyle(
+                                          fontSize: 15.sp,
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
