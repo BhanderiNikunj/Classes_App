@@ -96,8 +96,8 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                       Expanded(
                         child: Obx(
                           () => ListView.builder(
-                            itemCount: attendanceControllor
-                                .AttendanceList.length,
+                            itemCount:
+                                attendanceControllor.AttendanceList.length,
                             itemBuilder: (context, index) {
                               return Container(
                                 height: 35.sp,
@@ -334,7 +334,7 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
                 //   ),
                 // ),
                 title: Text(
-                  "Fees Detail",
+                  "Attendance",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15.sp,
@@ -344,6 +344,14 @@ class _AttendanceScreenState extends State<AttendanceScreen> {
               ),
             ),
           ],
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Get.toNamed('/addStu');
+          },
+          child: Icon(
+            Icons.add,
+          ),
         ),
       ),
     );

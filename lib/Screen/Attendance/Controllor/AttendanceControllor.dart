@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:my_app_1/Screen/Attendance/Model/AttendanceModel.dart';
 import 'package:my_app_1/Utiles/DBHelper.dart';
@@ -20,6 +21,11 @@ class AttendanceControllor extends GetxController {
     ),
   ].obs;
 
+  TextEditingController txtF_name = TextEditingController();
+  TextEditingController txtL_name = TextEditingController();
+  TextEditingController txtStd = TextEditingController();
+
+
   void insterAtt({
     required first_name,
     required last_name,
@@ -35,9 +41,6 @@ class AttendanceControllor extends GetxController {
   }
 
   Future<void> readAtt() async {
-
     AttendanceList.value = await DBHelper.dbHelper.readAtt() as List<AttendanceModel>;
-
-
   }
 }
